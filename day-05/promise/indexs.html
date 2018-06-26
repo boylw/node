@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise使用场景</title>
+</head>
+<body>
+
+	<form action="" id="user_form">
+		
+	</form>
+	<script src="./ajax.js"></script>
+	<script src="node_modules/art-template/lib/template-web.js"></script>
+	<script type="text/art-template" id="tp1">
+		姓名:<input type="text" name="" value="{{ user.username }}">
+		年龄:<input type="text" name="" value=" {{ user.age }}">
+		<select>
+			{{ each jobs }}
+			{{ if $value.id === user.job }}
+			<option value="{{ $value.id }}" selected>{{ $value.name }}</option>
+			{{ else }}
+			<option value="{{ $value.id }}">{{ $value.name }}</option>
+			{{ /if }}
+			{{ /each }}
+		</select>
+	</script>
+	<script type="text/javascript">		
+		M_Ajax_Get('http://127.0.0.1:3000/users/3',function (err,user) {
+
+			M_Ajax_Get('http://127.0.0.1:3000/jobs',function (err,jobs) {
+				if (err) {
+			 	console.log('数据接口错误')
+				} else {
+					user = JSON.parse(user)
+					jobs = JSON.parse(jobs)
+
+					var htmlStr = template('tp1',{
+						user : user,
+						jobs : jobs
+					})
+
+					document.querySelector('#user_form').innerHTML = htmlStr
+				}
+			})
+		})
+
+
+	</script>
+</body>
+</html>

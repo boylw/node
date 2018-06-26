@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise使用场景</title>
+</head>
+<body>
+
+	<form action="" id="user_form">
+		
+	</form>
+	<script src="./ajax.js"></script>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/art-template/lib/template-web.js"></script>
+	<script type="text/art-template" id="tp1">
+		姓名:<input type="text" name="" value="{{ user.username }}">
+		年龄:<input type="text" name="" value=" {{ user.age }}">
+		<select>
+			{{ each jobs }}
+			{{ if $value.id === user.job }}
+			<option value="{{ $value.id }}" selected>{{ $value.name }}</option>
+			{{ else }}
+			<option value="{{ $value.id }}">{{ $value.name }}</option>
+			{{ /if }}
+			{{ /each }}
+		</select>
+	</script>
+	<script type="text/javascript">	
+
+		var data = {};
+	    $.get('http://127.0.0.1:3000/users/1')
+	    .then(function(user){
+	    	data.user = user
+	    	return $.get('http://127.0.0.1:3000/jobs')
+	    })
+	    .then(function(jobs){
+	    	data.jobs = jobs
+		    var htmlStr = template('tp1',data)
+		    // document.querySelector('#user_form').html(htmlStr)
+		    document.querySelector('#user_form').innerHTML = htmlStr
+		    // console.log(document.querySelector('#user_form').html())
+	    })
+
+
+	</script>
+</body>
+</html>

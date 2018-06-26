@@ -1,0 +1,16 @@
+{
+  "name": "day-05",
+  "version": "1.0.0",
+  "description": "- Express\r - MongoDB\r - 项目\r   + 一天半的时间",
+  "main": "demo1.js",
+  "dependencies": {
+    "mongoose": "^5.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

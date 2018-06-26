@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<script src="./07-promise-ajax.js"></script>
+	<script type="text/javascript">
+		// 下面是promise格式
+		Get('http://127.0.0.1:3000/posts')
+		.then(function(posts){
+			console.log(posts)
+			return Get('http://127.0.0.1:3000/comments')
+		})
+		.then(function(comments){
+			console.log(comments);
+		});
+
+		// 下面是callback格式
+
+		Get('http://127.0.0.1:3000/profile',function(err,data){
+			if (err) {
+				console.log('请求错误');
+			} else {
+				console.log(data)
+			}
+		})
+	</script>
+</body>
+</html>

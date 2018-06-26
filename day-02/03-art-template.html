@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模板引擎的使用</title>
+	<script type="text/javascript" src="./resource/node_modules/art-template/lib/template-web.js"></script>
+</head>
+<body>
+	<div id="content"></div>
+	<script id="test" type="text/html">
+		<h1>{{title}}</h1>
+		<ul>
+			{{each list as value item}}
+				<li>{{ item + 1  }} : {{ value }}</li>
+			{{/each}}
+		</ul>
+		<p>{{sayHi}}</p>
+	</script>
+	<script type="text/javascript">
+		var data = {
+			title : "hello world",
+			list : ['xiaoming','sahsa','asdas'],
+			sayHi : '王八蛋你好啊'
+		};
+
+		var html = template('test',data);
+		document.getElementById('content').innerHTML = html;
+	</script>
+</body>
+</html>

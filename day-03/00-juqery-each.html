@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>jquery</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script src='./node_modules/jquery/dist/jquery.min.js'></script>
+	<script type="text/javascript">
+		// each()方法遍历 each 是 jQuery 提供的
+		// 这个 each 在jQuery的原型链中
+		$('div').each(function (index,item){
+			console.log(item)
+		})
+
+		// foreach() 没有在jq的原型链中
+		// foreach只能遍历数组
+		// jq获取的是伪对象
+		;[].slice.call($('div')).forEach(function(index,item){
+			console.log(item)
+		})
+	</script>
+</body>
+</html>

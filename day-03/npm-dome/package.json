@@ -1,0 +1,14 @@
+{
+  "name": "npm-dome",
+  "version": "0.0.1",
+  "description": "这是一个测试项目npm-dome",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lww",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
